@@ -19,7 +19,6 @@
   </head>
   <body>
     <streamlit-app>
-        # app.py
         import streamlit as st
         import pandas as pd
         import numpy as np
@@ -32,10 +31,6 @@
         from transformers import pipeline, AutoTokenizer, AutoModelForSeq2SeqLM
         import torch
         import random
-        
-        # ========================================
-        # 1. CACHED DATA & MODEL LOADING
-        # ========================================
         
         @st.cache_data
         def download_movielens():
@@ -77,17 +72,12 @@
             )
             return t5_pipe
         
-        # ========================================
-        # 2. LOAD EVERYTHING
-        # ========================================
         download_movielens()
         df, movies = load_data()
         model = train_svd_model(df)
         t5_pipe = load_hf_models()
         
-        # ========================================
-        # 3. GENRE INFERENCE - edit to get real genres
-        # ========================================
+
         def infer_genres(title):
             title = title.lower()
             if any(x in title for x in ['star wars', 'matrix', 'blade runner', 'alien']): 
@@ -98,9 +88,7 @@
                 return ["animation", "family"]
             return ["action", "drama"]
         
-        # ========================================
-        # 4. TAGLINE GENERATOR
-        # ========================================
+
         def generate_tagline(movie_title, user_id):
             user_ratings = df[df['user_id'] == user_id]
             if user_ratings.empty or user_ratings['rating'].mean() < 3.5:
@@ -120,9 +108,7 @@
                 base = f"Discover {movie_title} – a cinematic masterpiece!"
             return base.capitalize()
         
-        # ========================================
-        # 5. RECOMMENDATION ENGINE
-        # ========================================
+
         def get_top_n_recommendations(user_id, n=5):
             user_id = int(user_id)
             all_items = df['item_id'].unique()
@@ -145,25 +131,23 @@
             recs = recs.sort_values('predicted_rating', ascending=False)
             return recs['title'].tolist(), recs['predicted_rating'].tolist()
         
-        # ========================================
-        # 6. PLOTLY NETWORK GRAPH (REPLACES BOKEH)
-        # ========================================
+
         def plot_user_graph_plotly(user_id):
             user_id = int(user_id)
             user_data = df[(df['user_id'] == user_id) & (df['rating'] >= 4.0)]
             if user_data.empty:
                 return None
             
-            # Build graph
+            
             G = nx.from_pandas_edgelist(
                 user_data, source='user_id', target='title', edge_attr='rating'
             )
             G.add_node(user_id)
             
-            # Layout
+            
             pos = nx.spring_layout(G, k=1.5, iterations=100, seed=42)
             
-            # Node data
+            
             node_x = [pos[node][0] for node in G.nodes()]
             node_y = [pos[node][1] for node in G.nodes()]
             node_text = []
@@ -181,7 +165,7 @@
                     node_color.append(rating)
                     node_size.append(20)
             
-            # Edge data
+            
             edge_x = []
             edge_y = []
             for edge in G.edges():
@@ -190,10 +174,10 @@
                 edge_x.extend([x0, x1, None])
                 edge_y.extend([y0, y1, None])
             
-            # Create figure
+            
             fig = go.Figure()
             
-            # Edges
+           
             fig.add_trace(go.Scatter(
                 x=edge_x, y=edge_y,
                 line=dict(width=1, color='gray'),
@@ -201,7 +185,7 @@
                 mode='lines'
             ))
             
-            # Nodes
+            
             fig.add_trace(go.Scatter(
                 x=node_x, y=node_y,
                 mode='markers+text',
@@ -232,14 +216,12 @@
             
             return fig
         
-        # ========================================
-        # 7. STREAMLIT UI
-        # ========================================
+
         st.set_page_config(page_title="AI Movie Recommender", layout="wide")
         st.title("AI-Powered Movie Recommender")
         st.markdown("Enter a **User ID** (1–943) to get personalized recommendations with **AI-generated taglines** and **interactive taste graph**.")
         
-        # Sidebar
+    
         st.sidebar.header("User Input")
         user_id = st.sidebar.number_input("Enter User ID (1–943)", 1, 943, 1)
         n_recs = st.sidebar.slider("Number of Recommendations", 3, 10, 5)
@@ -267,9 +249,7 @@
                 except Exception as e:
                     st.error(f"Error: {e}")
                     st.info("Make sure User ID is between 1 and 943.")
-        # ========================================
-        # 8. FOOTER
-        # ========================================
+ 
         st.markdown("---")
         st.caption("Built by Naz with **Surprise SVD**, **Hugging Face**, **Plotly**, and **Streamlit** | "
                    "Dataset: [MovieLens 100K](https://grouplens.org/datasets/movielens/100k/)")
