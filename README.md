@@ -11,6 +11,12 @@
 > **"For the sci-fi fan who dreams in binary…"**  
 > — AI-generated tagline for *Blade Runner* (User 42)
 
+___
+
+This **AI-powered movie recommender** uses **SVD collaborative filtering** on the MovieLens 100K dataset to predict personalized movie ratings. It delivers **top-N recommendations** with confidence scores and generates **creative taglines** using **Hugging Face FLAN-T5** offline, without an API key. An **interactive Plotly network graph** visualizes user taste. Built with **Streamlit**, the app **caches models and data** for instant reloads.
+
+This project includes EDA on the movie dataset. The key insights
+
 ---
 
 ## Live Demo
@@ -21,7 +27,7 @@
 ## Features
 
 - **Personalized Top-N Recommendations** using **Singular Value Decomposition (SVD)**
-- **AI-Generated Taglines** via **FLAN-T5 + DialoGPT** (100% free, no API key)
+- **AI-Generated Taglines** via **FLAN-T5** (100% free, no API key)
 - **Interactive Taste Network Graph** with **Plotly**
 - **Fully Cached** – model trains once, loads instantly
 - **EDA** on MovieLens 100K
@@ -32,8 +38,7 @@
 
 - app.py #Main Streamlit App
 - requirements.txt #Project Dependencies
-- u.data #MovieLens ratings
-- u.item #Movie metadata
+- movie-lens-EDA.ipynb #Movie-Lens EDA
 - README.md
 
 ## How It Works
@@ -118,7 +123,7 @@ Insight:
 <img width="1023" height="525" alt="ratings_hourwise" src="https://github.com/user-attachments/assets/37c16970-6162-467f-85d6-8319b5602ba1" />
 
 ___________
-Insight: Users rated in the evening and at night. 
+Insight: Users rated the most in the evening and at night. 
 
 
 ## Tech Stack
