@@ -27,14 +27,6 @@ This project includes EDA on the movie dataset.
 
 ---
 
-## Live Interaction
-
-[Try the App!](https://your-username-movie-recommender.streamlit.app)
-
-> Interact with the app yourself.
-
----
-
 ## Features
 
 - **Personalized Top-N Recommendations** using **Singular Value Decomposition (SVD)**
