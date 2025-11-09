@@ -2,7 +2,7 @@
 
 **Collaborative Filtering + Generative AI + Interactive Visualizations**
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://your-app-name.streamlit.app)
+![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)
 [![Python](https://img.shields.io/badge/Python-3.10-blue)](https://python.org)
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-FFD21E?logo=huggingface&logoColor=white)](https://huggingface.co)
 [![Plotly](https://img.shields.io/badge/Plotly-3F4F75?logo=plotly&logoColor=white)](https://plotly.com)
