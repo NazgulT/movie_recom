@@ -11,7 +11,7 @@
 > **"For the sci-fi fan who dreams in binary…"**  
 > — AI-generated tagline for *Blade Runner* (User 42)
 
-___
+---
 
 This **AI-powered movie recommender** uses **SVD collaborative filtering** on the MovieLens 100K dataset to predict personalized movie ratings. It delivers **top-N recommendations** with confidence scores and generates **creative taglines** using **Hugging Face FLAN-T5** offline, without an API key. An **interactive Plotly network graph** visualizes user taste. Built with **Streamlit**, the app **caches models and data** for instant reloads.
 
@@ -19,8 +19,19 @@ This project includes EDA on the movie dataset.
 
 ---
 
-## Live Demo
+## Demo GIF
+
+![Demo GIF](https://github.com/user-attachments/assets/ced90185-e41d-4b6b-830e-86203cc43c2d)
+
+> Watch the app in action: Enter User ID = 5, get 5 personalized recs with AI taglines, and explore the taste graph!
+
+---
+
+## Live Interaction
+
 [Try the App!](https://your-username-movie-recommender.streamlit.app)
+
+> Interact with the app yourself.
 
 ---
 
