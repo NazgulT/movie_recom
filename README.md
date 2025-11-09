@@ -15,7 +15,7 @@ ___
 
 This **AI-powered movie recommender** uses **SVD collaborative filtering** on the MovieLens 100K dataset to predict personalized movie ratings. It delivers **top-N recommendations** with confidence scores and generates **creative taglines** using **Hugging Face FLAN-T5** offline, without an API key. An **interactive Plotly network graph** visualizes user taste. Built with **Streamlit**, the app **caches models and data** for instant reloads.
 
-This project includes EDA on the movie dataset. The key insights
+This project includes EDA on the movie dataset.
 
 ---
 
@@ -159,9 +159,9 @@ Subsequent runs will run instantly.
 ## Future Ideas
 
 - Add movie posters (OMDb API)
-- User login & history
 - Use IMDb dataset, webscrape Netflix
 - Use genre information more extensively
+- Use GridSearch to find the best model, evaluate
 
 Author
 
